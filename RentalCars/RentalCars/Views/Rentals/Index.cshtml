@@ -1,0 +1,68 @@
+﻿@model IEnumerable<RentalCars.Models.Rental>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Rentals</h2> <!-- Main Title -->
+
+<!-- Create new button -->
+<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Create New", "Create")</button>
+<!-- Create new button/ -->
+
+<!-- Table STARTS -->
+<table class="table table-hover">
+    <thead> <!-- Header of the table -->
+        <tr> <!-- Creates table row -->
+            <th> <!-- Creates table column -->
+                @Html.DisplayNameFor(model => model.DateRented)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReturned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead> <!-- Header of the table/ -->
+
+    <!-- Goes true all the items in Model and displays them -->
+    @foreach (var item in Model)
+    {
+        <tr class="table-dark"> <!-- Implemented the table-dark css -->
+            <td> <!-- Table data, represents a single cell in the table -->
+                @Convert.ToDateTime(item.DateRented).ToString("dd/MM/yyyy") <!-- Needed to convert DateTime toString -->
+            </td>
+            <td>
+                @Convert.ToDateTime(item.DateReturned).ToString("dd/MM/yyyy") <!-- Needed to convert DateTime toString -->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Manufacturer)
+            </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.Car.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+
+            <td> <!-- HtmlAction links <a> tags -->
+                @Html.ActionLink("Edit", "Edit", new { id = item.RentalID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RentalID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RentalID })
+            </td>
+        </tr>
+    }
+
+</table>
+<!-- Table ENDS/ -->

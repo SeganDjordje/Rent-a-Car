@@ -1,0 +1,50 @@
+﻿@model RentalCars.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Details</h2> <!-- Main Title -->
+
+<div>
+    <h4>Customer</h4> <!-- Title -->
+    <hr />
+
+    <!-- Descritpion list -->
+    <dl class="dl-horizontal text-primary"> <!-- Added text css / dl is Description List -->
+        <dt> <!-- Represents a Description Term or name -->
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd> <!-- Represents a description -->
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverLicNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverLicNo)
+        </dd>
+
+
+        <!-- Turn on for checking ID -->
+        @*<dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>*@
+
+    </dl>
+    <!-- Descritpion list/ -->
+</div>
+
+<!-- Buttons -->
+<button type="button" class="btn btn-outline-info">@Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID })</button>
+<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Back to List", "Index")</button>
+<!-- Buttons/ -->

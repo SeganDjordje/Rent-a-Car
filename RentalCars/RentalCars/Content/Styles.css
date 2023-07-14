@@ -1,0 +1,57 @@
+﻿#hover-HtmlLinks :hover 
+{
+    font-weight: bold;
+}
+
+#opacity-Background 
+{
+    background-color: rgba(128,128,128, 0.1);
+    padding: 20px;
+}
+
+#_LayoutBody 
+{
+    background-attachment: fixed !important;
+    background-position: bottom !important;
+}
+
+a 
+{
+    text-decoration: none;
+}
+
+#btnDel 
+{
+    color: white !important;
+}
+
+#btnDel a
+{
+    color: white !important;
+}
+
+#carsTable_paginate a
+{
+    padding: 10px;
+}
+
+#customersTable_paginate a {
+    padding: 10px;
+}
+
+#rentalsTable_paginate a {
+    padding: 10px;
+}
+
+#carsTable tbody
+{
+    background-color: #170229;
+}
+
+#customersTable tbody {
+    background-color: #170229;
+}
+
+#rentalsTable tbody {
+    background-color: #170229;
+}

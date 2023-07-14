@@ -1,0 +1,74 @@
+﻿@model IEnumerable<RentalCars.Models.Car>
+
+
+@{
+    ViewBag.Title = "ReadOnlyList";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Cars - Read Only List</h2> <!-- Main Title -->
+
+<!-- Table STARTS -->
+<table id="carsTable" class="table table-hover">
+    <thead> <!-- Header of the table -->
+        <tr> <!-- Creates table row -->
+            <th> <!-- Creates table column -->
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicencePlate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Available)
+            </th>
+        </tr>
+    </thead> <!-- Header of the table/ -->
+</table>
+<!-- Table ENDS/ -->
+
+
+@section scripts
+{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+
+
+
+    <script>
+        var dataTable;
+
+        $(document).ready(function () {
+            dataTable = $("#carsTable").DataTable
+                ({
+                    "ajax":
+                    {
+                        "url": "/Cars/GetData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns":
+                        [
+                            { "data": "Manufacturer" },
+                            { "data": "Model" },
+                            { "data": "LicencePlate" },
+                            { "data": "Year" },
+                            { "data": "Available" }
+                        ],
+                    "language":
+                    {
+                        "emptyTable": "No data found"
+                    }
+                });
+        });
+    </script>
+}

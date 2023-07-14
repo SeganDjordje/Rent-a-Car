@@ -1,0 +1,66 @@
+﻿@model RentalCars.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Details</h2> <!-- Main Title -->
+
+<div>
+    <h4>Car</h4> <!-- Title -->
+    <hr />
+
+    <!-- Descritpion list -->
+    <dl class="dl-horizontal text-primary"> <!-- Added text css / dl is Description List -->
+        <dt> <!-- Represents a Description Term or name -->
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd> <!-- Represents a description -->
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LicencePlate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LicencePlate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd> <!-- Needed to convert DateTime toString -->
+            @Convert.ToDateTime(Model.Year).ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Available)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Available)
+        </dd>
+
+    </dl>
+    <!-- Descritpion list/ -->
+
+</div>
+
+<!-- Buttons -->
+<button type="button" class="btn btn-outline-info">@Html.ActionLink("Edit", "Edit", new { id = Model.CarID })</button>
+<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Back to List", "Index")</button>
+<!-- Buttons/ -->

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<RentalCars.Models.Customer>
+
+@{
+    ViewBag.Title = "ReadOnlyList";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Customers - Read Only List</h2> <!-- Main Title -->
+<!-- Table STARTS -->
+<table id="customersTable" class="table table-hover">
+    <thead>
+        <!-- Header of the table -->
+        <tr>
+            <!-- Creates table row -->
+            <th>
+                <!-- Creates table column -->
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicNo)
+            </th>
+        </tr>
+    </thead> <!-- Header of the table/ -->
+</table>
+<!-- Table ENDS/ -->
+
+
+@section scripts
+{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+
+
+
+    <script>
+        var dataTable;
+
+        $(document).ready(function () {
+            dataTable = $("#customersTable").DataTable
+                ({
+                    "ajax":
+                    {
+                        "url": "/Customers/GetData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns":
+                        [
+                            { "data": "Name" },
+                            { "data": "DriverLicNo" }
+                        ],
+                    "language":
+                    {
+                        "emptyTable": "No data found"
+                    }
+                });
+        });
+    </script>
+}

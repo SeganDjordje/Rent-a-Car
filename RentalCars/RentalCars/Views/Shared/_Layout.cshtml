@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title - Rent a Car </title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- JS boostrap importer -->
+    <!-- Imported so the dropDown of NavBar works. It seems it uses .JS for it to function -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body id="_LayoutBody">
+
+    <!-- NAVBAR STARTS HERE -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+
+        <!-- this div represents left text of navbar  -->
+        <div class="container-fluid">
+            @Html.ActionLink("Rent a car", "Index", "Rentals", new { area = "" }, new { @class = "navbar-brand title", style = "font-family: fantasy" })
+
+            <!-- This button represents the resposnive drop down button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- This button represents the resposnive drop down button/ -->
+
+            <!-- Navbar action links -->
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto" id="hover-HtmlLinks"> <!-- Imported hover effect over text -->
+
+                    <li class="nav-item active">
+                        @Html.ActionLink("Home Page", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
+                    <li class="nav-item">
+                        @Html.ActionLink("New Rental", "Create", "Rentals", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
+                    <li class="nav-item">
+                        @Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
+                    <li class="nav-item">
+                        @Html.ActionLink("Cars", "Index", "Cars", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
+                </ul>
+
+                <!-- Search button -->
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <!-- Search button/ -->
+
+                @Html.Partial("_LoginPartial") <!-- Plugged Log in and Register -->
+
+            </div>
+            <!-- Navbar action links/ -->
+        </div>
+    </nav>
+    <!-- NAVBAR ENDS HERE/ -->
+
+    <!-- Bottom of the page -->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application Version 1.3</p>
+        </footer>
+    </div>
+
+    <!-- Plug in, Scripts and bundles -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

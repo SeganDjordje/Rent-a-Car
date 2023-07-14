@@ -1,0 +1,80 @@
+﻿@model IEnumerable<RentalCars.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+
+<h2>Cars</h2> <!-- Main Title -->
+
+<!-- Create new button -->
+<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Create New", "Create")</button>
+<!-- Create new button/ -->
+
+<!-- Table STARTS -->
+<table class="table table-hover">
+    <thead> <!-- Header of the table -->
+        <tr> <!-- Creates table row -->
+            <th> <!-- Creates table column -->
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicencePlate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Available)
+            </th>
+            <th></th>
+        </tr>
+    </thead> <!-- Header of the table/ -->
+
+    <tbody> <!-- Body of the table, also groups them all together -->
+        @foreach (var item in Model)
+        {
+            <!-- Implemented the table-dark css -->
+            <tr class="table-dark">
+                <td> <!-- Table data, represents a single cell in the table -->
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicencePlate)
+                </td>
+
+                <td> <!-- Needed to convert DateTime toString -->
+                    @Convert.ToDateTime(item.Year).ToString("dd/MM/yyyy")
+                </td>
+
+                <td>
+                    @if (item.Available)
+                    {
+                        <text>Yes</text>
+                    }
+
+                    else
+                    {
+                        <text>No</text>
+                    }
+                </td>
+
+                <td> <!-- HtmlAction links <a> tags -->
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CarID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CarID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CarID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- Table ENDS/ -->

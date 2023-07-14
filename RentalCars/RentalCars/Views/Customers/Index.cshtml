@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RentalCars.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Customers</h2> <!-- Main Title -->
+
+<!-- Create new button -->
+<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Create New", "Create")</button>
+<!-- Create new button/ -->
+
+<!-- Table STARTS -->
+<table class="table table-hover">
+    <thead> <!-- Header of the table -->
+        <tr> <!-- Creates table row -->
+            <th> <!-- Creates table column -->
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead> <!-- Header of the table/ -->
+
+    <!-- Goes true all the items in Model and displays them -->
+    @foreach (var item in Model)
+    {
+        <!-- Implemented the table-dark css -->
+        <tr class=" table-dark">
+            <td> <!-- Table data, represents a single cell in the table -->
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverLicNo)
+            </td>
+            <td> <!-- HtmlAction links <a> tags -->
+                @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+            </td>
+        </tr>
+    }
+    <!-- Goes true all the items in Model and displays them/ -->
+
+</table>
+<!-- Table ENDS/ -->

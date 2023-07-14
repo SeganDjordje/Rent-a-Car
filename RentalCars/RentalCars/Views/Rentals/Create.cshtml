@@ -1,0 +1,83 @@
+﻿@model RentalCars.Models.Rental
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Create</h2> <!-- Main Title -->
+
+<!-- FORM BEGINS -->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Rental</h4> <!-- Title -->
+        <hr />
+
+        <!-- Displays validation errors -->
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- Label for CustomerID -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerID, "Customer ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CustomerID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!-- Label for CustomerID/ -->
+
+        <!-- Label for CarID -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.CarID, "Car ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CarID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CarID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!-- Label for CarID/ -->
+
+        <!-- Label for DateRented -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateRented, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateRented, new { htmlAttributes = new { @class = "form-control", type = "date" } }) <!-- Added type = "date" -->
+                @Html.ValidationMessageFor(model => model.DateRented, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!-- Label for DateRented/ -->
+
+        <!-- Label for DateReturned -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateReturned, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateReturned, new { htmlAttributes = new { @class = "form-control", type = "date" } }) <!-- Added type = "date" -->
+                @Html.ValidationMessageFor(model => model.DateReturned, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!-- Label for DateReturned/ -->
+        <br />
+
+        <!-- Create button -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-light" id="btnDel"/>
+            </div>
+        </div>
+        <br />
+        <!-- Create button/ -->
+    </div>
+}
+<!-- FORM ENDS/ -->
+
+<!-- Back to list button -->
+<button type="button" class="btn btn-outline-primary">@Html.ActionLink("Back to List", "Index")</button>
+<!-- Back to list button/ -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

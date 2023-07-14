@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RentalCars.Models.Rental>
+
+@{
+    ViewBag.Title = "ReadOnlyList";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Rentals</h2> <!-- Main Title -->
+<!-- Table STARTS -->
+<table id="rentalsTable" class="table table-hover">
+    <thead>
+        <!-- Header of the table -->
+        <tr>
+            <!-- Creates table row -->
+            <th>
+                <!-- Creates table column -->
+                @Html.DisplayNameFor(model => model.DateRented)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReturned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Name)
+            </th>
+        </tr>
+    </thead> <!-- Header of the table/ -->
+</table>
+<!-- Table ENDS/ -->
+
+
+@section scripts
+{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+
+
+
+    <script>
+        var dataTable;
+
+        $(document).ready(function () {
+            dataTable = $("#rentalsTable").DataTable
+                ({
+                    "ajax":
+                    {
+                        "url": "/Rentals/GetData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns":
+                        [
+                            { "data": "DateRented" },
+                            { "data": "DateReturned" },
+                            { "data": "Manufacturer" },
+                            { "data": "Model" },
+                            { "data": "Name" }
+                        ],
+                    "language":
+                    {
+                        "emptyTable": "No data found"
+                    }
+                });
+        });
+    </script>
+}

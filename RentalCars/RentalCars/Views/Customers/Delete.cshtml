@@ -1,0 +1,48 @@
+﻿@model RentalCars.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<h2>Delete</h2> <!-- Main Title -->
+
+<h3>Are you sure you want to delete this?</h3> <!-- Title -->
+<div>
+    <h4>Customer</h4> <!-- Title -->
+    <hr />
+
+    <!-- Descritpion list -->
+    <dl class="dl-horizontal text-primary"> <!-- Added text css / dl is Description List -->
+        <dt> <!-- Represents a Description Term or name -->
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd> <!-- Represents a description -->
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverLicNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverLicNo)
+        </dd>
+
+    </dl>
+    <!-- Descritpion list/ -->
+
+    <!-- Buttons / delete / back to list -->
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <input type="submit" value="Delete" class="btn btn-outline-danger" id="btnDel" />
+            <button type="button" class="btn btn-outline-primary">@Html.ActionLink("Back to List", "Index")</button>
+        </div>
+    }
+</div>

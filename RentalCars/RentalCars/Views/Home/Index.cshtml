@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Plugged in my own .css file -->
+@Styles.Render("~/Content/Styles.css")
+
+<!-- Images alligned with transparent background -->
+<div id="opacity-Background">
+
+    <div class="d-flex flex-wrap justify-content-center ">
+        <div class="col-md-4 card">
+            <img src="~/Content/Slike/RolsRoys Concept.jpg" class="img-fluid h-100" style="opacity: 1" />
+        </div>
+
+        <div class="col-md-4 card">
+            <img src="~/Content/Slike/BMW Vision.jpg" class="img-fluid h-100" style="opacity: 1" />
+        </div>
+
+        <div class="col-md-4 card">
+            <img src="~/Content/Slike/Mercedes Vision.jpeg" class="img-fluid h-100" style="opacity: 1" />
+        </div>
+    </div>
+
+</div>
+<!-- Images alligned with transparent background -->
+<!-- Txt under images with card-class -->
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card border-dark">
+            <div class="card-body">
+
+                <h4 class="card-title">Cars of the future?</h4>
+                <p class="card-text">
+                    It is the most spectacular revolution. Tomorrow, cars will be able to do without their drivers.
+                    “This development will be in stages: we start without feet and then do without hands and eventually without eyes,” says Pascal Brier.
+                    The next step? 100% autonomy. Engineers are working to replace human eyes with a multitude of cameras, sensors and lasers that will reproduce
+                    the environment in 3D and allow the vehicle to make navigation decisions alone. Popularized by Google and its famous Google car,
+                    most manufacturers have begun looking at autonomy and are currently in the phase of conducting major tests on the roads.
+                </p>
+
+            </div>
+        </div>
+        <p><a class="btn btn-default" href="https://ignition.altran.com/en/article/what-will-the-car-of-the-future-look-like/">Find out more! &raquo;</a></p>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card border-dark">
+            <div class="card-body">
+
+                <h4 class="card-title">BMW Vision 100</h4>
+                <p class="card-text">
+                    The visionary vehicle from BMW stands for the sheer driving pleasure typical of BMW. And it provides spectacular insights into its future.
+                    The starting point for the design process was the interior – as the drivers’ well-being will become increasingly important in the future.
+                    They should have the feeling of sitting in a machine conceived for them personally. This is why the cabin dimensions appear particularly
+                    gen
+                    erous compared to the overall size of the vehicle.
+                </p>
+            </div>
+        </div>
+        <p><a class="btn btn-default" href="https://www.bmw.in/en/topics/Fascination-BMW/bmw-next-100/bmw-next-100.html">More about Vision &raquo;</a></p>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="card border-dark">
+            <div class="card-body">
+
+                <h4 class="card-title">Mercedes AVTR</h4>
+                <p class="card-text">
+                    The name of the groundbreaking concept vehicle stands not only for the close collaboration in developing the show car together with the
+                    AVATAR team but also for ADVANCED VEHICLE TRANSFORMATION. This concept vehicle embodies the vision of Mercedes-Benz designers, engineers
+                    and trend researchers for mobility in the distant future.
+                </p>
+
+            </div>
+        </div>
+        <p><a class="btn btn-default" href="https://www.mercedes-benz.com/en/innovation/concept-cars/vision-avtr/">Get inspired! &raquo;</a></p>
+    </div>
+
+</div>
+<!-- Txt under images with card-class -->
